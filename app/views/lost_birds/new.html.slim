@@ -1,0 +1,22 @@
+h1 迷子の登録
+
+= form_with model: @lost_bird do |f|
+  = f.label :name, '鳥さんのお名前'
+  = f.text_field :name
+
+  = f.label :bird_id, '鳥さんの種類'
+  = f.select :bird_id, Bird.all.map { |b| [b.ja_name, b.id] }
+  = f.label :zipcode, '逃したor保護している場所の郵便番号(ハイフンなし)'
+  = f.text_field :zipcode
+  = f.label :lost_at, '逃した日'
+  = f.date_field :lost_at
+  = f.label :found_at, '見つけた日'
+  = f.date_field :found_at
+  = f.label :ring_number, '足環番号'
+  = f.text_field :ring_number
+  = f.label :description, '鳥さんの特徴や当時の状況などその他の情報'
+  = f.text_area :description
+  // TODO: 写真
+
+  = f.submit '登録する'
+
