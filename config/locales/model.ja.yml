@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      lost_bird: 迷子
+    attributes:
+      lost_bird:
+        address: 住所
