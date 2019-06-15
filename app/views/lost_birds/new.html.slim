@@ -1,6 +1,9 @@
 h1 迷子の登録
 
-= form_with model: @lost_bird do |f|
+- @lost_bird.errors.full_messages.each do |message|
+  = p message
+
+= form_with model: @lost_bird, local: true do |f|
   = f.label :name, '鳥さんのお名前'
   = f.text_field :name
 
