@@ -9,8 +9,8 @@ h1 迷子の登録
 
   = f.label :bird_id, '鳥さんの種類'
   = f.select :bird_id, Bird.all.map { |b| [b.ja_name, b.id] }
-  = f.label :zipcode, '逃したor保護している場所の郵便番号(ハイフンなし)'
-  = f.text_field :zipcode
+  = f.label :address, '逃したor保護している住所'
+  = f.text_field :address
   = f.label :lost_at, '逃した日'
   = f.date_field :lost_at
   = f.label :found_at, '見つけた日'

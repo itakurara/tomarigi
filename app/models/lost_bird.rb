@@ -12,7 +12,6 @@ class LostBird < ApplicationRecord
   # end
 
   belongs_to :bird
-  belongs_to :address
 
   before_save :normalize_blank
 
