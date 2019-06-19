@@ -27,6 +27,65 @@ class LostBird < ApplicationRecord
     end
   end
 
+  def self.lookup(params)
+    __elasticsearch__.search(params_for_elasticsearch(params))
+  end
+
+  def self.params_for_elasticsearch(params)
+    {
+      query: {
+        bool: build_bool_queries(params)
+      }
+    }
+  end
+
+  def self.build_bool_queries(params)
+    if params[:meet_all_conditions] == 'true'
+      {
+        filter: filter_queries(params),
+        must: match_queries(params)
+      }
+    else
+      queries = {
+        filter: filter_queries(params),
+        should: match_queries(params)
+      }
+      if queries[:should].present?
+        queries.merge!(minimum_should_match: 1)
+      end
+      queries
+    end
+  end
+
+  def self.filter_queries(params)
+    filter_queries = []
+
+    if status = params[:status]
+      filter_queries << { term: { status: status } }
+    end
+
+    unless params[:include_resolved] == 'true'
+      filter_queries << { term: { resolved: false } }
+    end
+
+    filter_queries
+  end
+
+  def self.match_queries(params)
+    params = params.except(:status, :include_resolved, :meet_all_conditions)
+    match_queries = []
+    params.each do |k, v|
+      if v.present?
+        if k == 'address'
+          match_queries << { match_phrase: { k => v } }
+        else
+          match_queries << { match: { k => v } }
+        end
+      end
+    end
+    match_queries
+  end
+
   def as_indexed_json(options={})
     {
       description: description,

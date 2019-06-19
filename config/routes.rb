@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  resources :lost_birds, only: [:new, :create, :show]
+  root 'welcome#home'
+
+  resources :lost_birds, only: [:new, :create, :show] do
+    collection do
+      get 'search'
+    end
+  end
 end

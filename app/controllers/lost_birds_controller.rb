@@ -15,9 +15,17 @@ class LostBirdsController < ApplicationController
     end
   end
 
+  def search
+    @search_results = LostBird.lookup(search_params).records.to_a
+  end
+
   private
 
   def lost_bird_params
     params.required(:lost_bird).permit(:status, :name, :address, :bird_id, :lost_at, :found_at, :ring_number, :description)
+  end
+
+  def search_params
+    params.required(:q).permit(:status, :kind, :ring_number, :description, :address, :date, :for_date, :include_resolved, :meet_all_conditions)
   end
 end
