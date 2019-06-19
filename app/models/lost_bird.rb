@@ -1,5 +1,6 @@
 class LostBird < ApplicationRecord
   include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 
   mapping dynamic: 'strict' do
     indexes :description, analyzer: 'kuromoji', type: 'text'
