@@ -4,11 +4,11 @@ h1 迷子の登録
   = p message
 
 = form_with model: @lost_bird, local: true do |f|
-  = f.select :status, LostBird.statuses.map { |k, v| [LostBird.human_attribute_name("status.#{k}"), v] }
+  = f.select :status, options_for_status
   = f.label :name, '鳥さんのお名前'
   = f.text_field :name
   = f.label :bird_id, '鳥さんの種類'
-  = f.select :bird_id, Bird.all.map { |b| [b.ja_name, b.id] }
+  = f.select :bird_id, options_for_birds
   = f.label :address, '逃したor保護している住所'
   = f.text_field :address
   = f.label :lost_at, '逃した日'
