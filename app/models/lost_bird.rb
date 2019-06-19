@@ -17,8 +17,10 @@ class LostBird < ApplicationRecord
   before_save :normalize_blank
 
   def normalize_blank
-    attributes.each do |column, _value|
-      self[column] = self[column].presence
+    attributes.each do |column, value|
+      if value.is_a?(String)
+        self[column] = self[column].presence
+      end
     end
   end
 
