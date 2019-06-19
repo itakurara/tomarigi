@@ -1,26 +1,40 @@
-h1 迷子の登録
+.container
+  h1 迷子の登録
 
-- @lost_bird.errors.full_messages.each do |message|
-  = p message
+  - @lost_bird.errors.full_messages.each do |message|
+    = p message
 
-= form_with model: @lost_bird, local: true do |f|
-  = f.select :status, options_for_status
-  = f.label :name, '鳥さんのお名前'
-  = f.text_field :name
-  = f.label :bird_id, '鳥さんの種類'
-  = f.select :bird_id, options_for_birds
-  = f.label :address, '逃したor保護している住所'
-  = f.text_field :address
-  = f.label :lost_at, '逃した日'
-  = f.date_field :lost_at
-  = f.label :found_at, '見つけた日'
-  = f.date_field :found_at
-  = f.label :ring_number, '足環番号'
-  = f.text_field :ring_number
-  = f.label :description, '鳥さんの特徴や当時の状況などその他の情報'
-  = f.text_area :description
-  // TODO: 写真
+  = form_with model: @lost_bird, local: true do |f|
+    .row
+      .six.columns
+        = f.select :status, options_for_status, {}, class: 'u-full-width'
+    .row
+      .six.columns
+        = f.label :name, '鳥さんのお名前'
+        = f.text_field :name, class: 'u-full-width'
+    .row
+      .six.columns
+        = f.label :ring_number, '足環番号'
+        = f.text_field :ring_number, class: 'u-full-width'
+      .six.columns
+        = f.label :bird_id, '鳥さんの種類'
+        = f.select :bird_id, options_for_birds
+    .row
+      = f.label :address, '逃したor保護している住所'
+      = f.text_field :address, class: 'u-full-width'
+    .row
+      .six.columns
+        = f.label :lost_at, '逃した日'
+        = f.date_field :lost_at, class: 'u-full-width'
+      .six.columns
+        = f.label :found_at, '見つけた日'
+        = f.date_field :found_at, class: 'u-full-width'
+    .row
+      = f.label :description, '鳥さんの特徴や当時の状況などその他の情報'
+      = f.text_area :description, class: 'u-full-width'
+    // TODO: 写真
 
-  = f.submit '登録する'
+    .row
+      = f.submit '登録する', class: 'u-full-width button-primary'
 
-= link_to 'top', root_path
+  = link_to 'top', root_path

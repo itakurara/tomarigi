@@ -1,43 +1,59 @@
-h1 tomarigi
+div.container
+  h1 tomarigi
+  = form_with scope: :q, url: search_lost_birds_path, method: :get, local:true do |f|
+    .row
+      .four.columns
+        = f.label 'status_kept' do
+          = f.radio_button :status, 'kept', checked: true
+          span.label-body 保護されてる鳥さん
+      .four.columns
+        = f.label 'status_lost' do
+          = f.radio_button :status, 'lost'
+          span.label-body 迷子の鳥さん
+    .row
+      .six.columns
+        = f.label :kind, '鳥さんの種類'
+        = f.text_field :kind, class: 'u-full-width'
+      .six.columns
+        = f.label :address, '住所'
+        = f.text_field :address, class: 'u-full-width'
+    .row
+      .four.columns
+        = f.label :ring_number, '足環の番号'
+        = f.text_field :ring_number, class: 'u-full-width'
+      .eight.columns
+        = f.label :description, 'キーワード(スペース区切りで複数入力できます)'
+        = f.text_field :description, class: 'u-full-width'
+    .row
+      .six.columns
+        = f.label :date, '迷子になった/保護した日付'
+        = f.date_field :date, class: 'u-full-width'
+        br
+        = f.label 'from_date_week' do
+          = f.radio_button :from_date, 'week'
+          span.label-body 指定した日付から1週間後まで
+        = f.label 'from_date_month' do
+          = f.radio_button :from_date, 'month'
+          span.label-body 指定した日付から一ヶ月後まで
+        = f.label 'from_date_half_a_year' do
+          = f.radio_button :from_date, 'half_a_year'
+          span.label-body 指定した日付から半年後まで
+        = f.label 'from_date_year' do
+          = f.radio_button :from_date, 'year'
+          span.label-body 指定した日付から1年後まで
+        = f.label 'from_date_for_date' do
+          = f.radio_button :from_date, 'for_date'
+          span.label-body 任意の日まで
+          = f.date_field :for_date
+    hr
+    .row
+      = f.label :include_resolved do
+        = f.check_box :include_resolved, {}, checked_valud = 'true', unchecked_value = 'false'
+        span.label-body 解決済みを含める
+      = f.label :meet_all_conditions do
+        = f.check_box :meet_all_conditions, {}, checked_valud = 'true', unchecked_value = 'false'
+        span.label-body 全ての条件を満たすものを検索
+    .row
+      = f.submit '検索する', class: 'button-primary u-full-width'
 
-= form_with scope: :q, url: search_lost_birds_path, method: :get, local:true do |f|
-  = f.radio_button :status, 'kept', checked: true
-  = f.label 'status_kept', '保護'
-  = f.radio_button :status, 'lost'
-  = f.label 'status_lost', '迷子'
-
-  = f.label :kind, '鳥の種類'
-  = f.text_field :kind
-
-  = f.label :ring_number, '足環の番号'
-  = f.text_field :ring_number
-
-  = f.label :description, '説明に含まれている用語'
-  = f.text_field :description
-
-  = f.label :address, '住所'
-  = f.text_field :address
-
-  = f.label :date, '日付'
-  = f.date_field :date
-  = f.radio_button :from_date, 'week'
-  = f.label 'from_date_week', '指定した日付から1週間後まで'
-  = f.radio_button :from_date, 'month'
-  = f.label 'from_date_month', '指定した日付から一ヶ月後まで'
-  = f.radio_button :from_date, 'half_a_year'
-  = f.label 'from_date_half_a_year', '指定した日付から半年後まで'
-  = f.radio_button :from_date, 'year'
-  = f.label 'from_date_year', '指定した日付から1年後まで'
-  = f.radio_button :from_date, 'for_date'
-  = f.label 'from_date_for_date', '任意の日付まで'
-  = f.text_field :for_date
-
-  = f.label :include_resolved, '解決済みを含める'
-  = f.check_box :include_resolved, {}, checked_valud = 'true', unchecked_value = 'false'
-
-  = f.label :meet_all_conditions, '全ての条件を満たすものを検索'
-  = f.check_box :meet_all_conditions, {}, checked_valud = 'true', unchecked_value = 'false'
-
-  = f.submit '検索'
-
-
+  = link_to '「探してます」「保護してます」の登録', new_lost_bird_path
