@@ -5,3 +5,7 @@ ja:
     attributes:
       lost_bird:
         address: 住所
+        status: 状況
+      lost_bird/status:
+        lost: 迷子
+        kept: 保護

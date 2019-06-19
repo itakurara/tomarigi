@@ -12,6 +12,7 @@ class LostBird < ApplicationRecord
   # end
 
   belongs_to :bird
+  enum status: [:lost, :kept]
 
   before_save :normalize_blank
 
