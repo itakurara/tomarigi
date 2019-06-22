@@ -58,21 +58,22 @@ class LostBird < ApplicationRecord
   end
 
   def self.filter_queries(params)
-    filter_queries = []
+    term_queries = []
 
     if status = params[:status]
-      filter_queries << { term: { status: status } }
+      term_queries << { term: { status: status } }
     end
 
     unless params[:include_resolved] == 'true'
-      filter_queries << { term: { resolved: false } }
+      term_queries << { term: { resolved: false } }
     end
 
-    filter_queries
+    (term_queries << range_queries(params)).compact
   end
 
   def self.match_queries(params)
-    params = params.except(:status, :include_resolved, :meet_all_conditions)
+    params = params.except(:status, :include_resolved, :date, :date_range, :meet_all_conditions)
+
     match_queries = []
     params.each do |k, v|
       if v.present?
@@ -83,7 +84,32 @@ class LostBird < ApplicationRecord
         end
       end
     end
+
     match_queries
+  end
+
+  def self.range_queries(params)
+    return unless date_param = params[:date].presence
+    return unless range_param = params[:date_range].presence
+
+    date = date_param.to_date
+    range = case range_param
+            when 'week'
+              1.week
+            when 'month'
+              1.month
+            when 'half_a_year'
+              6.months
+            when 'year'
+              1.year
+            end
+
+    case params[:status]
+    when 'kept'
+      { range: { found_at: { gte: date, lte: date + range } } }
+    when 'lost'
+      { range: { lost_at: { gte: date, lte: date + range } } }
+    end
   end
 
   def as_indexed_json(options={})

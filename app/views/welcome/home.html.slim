@@ -12,6 +12,25 @@ div.container
           span.label-body 迷子の鳥さん
     .row
       .six.columns
+        = f.label :date, '保護された or 迷子になった日付を絞り込む'
+        p 日付を指定しなければ、今日までの全ての日付を対象とします。
+        = f.date_field :date, class: 'u-full-width'
+        br
+        = f.label 'date_range_week' do
+          = f.radio_button :date_range, 'week', checked: true
+          span.label-body 指定した日付から1週間後まで
+        = f.label 'date_range_month' do
+          = f.radio_button :date_range, 'month'
+          span.label-body 指定した日付から一ヶ月後まで
+        = f.label 'date_range_half_a_year' do
+          = f.radio_button :date_range, 'half_a_year'
+          span.label-body 指定した日付から半年後まで
+        = f.label 'date_range_year' do
+          = f.radio_button :date_range, 'year'
+          span.label-body 指定した日付から1年後まで
+    hr
+    .row
+      .six.columns
         = f.label :kind, '鳥さんの種類'
         = f.text_field :kind, class: 'u-full-width'
       .six.columns
@@ -25,34 +44,13 @@ div.container
         = f.label :description, 'キーワード(スペース区切りで複数入力できます)'
         = f.text_field :description, class: 'u-full-width'
     .row
-      .six.columns
-        = f.label :date, '迷子になった/保護した日付'
-        = f.date_field :date, class: 'u-full-width'
-        br
-        = f.label 'from_date_week' do
-          = f.radio_button :from_date, 'week'
-          span.label-body 指定した日付から1週間後まで
-        = f.label 'from_date_month' do
-          = f.radio_button :from_date, 'month'
-          span.label-body 指定した日付から一ヶ月後まで
-        = f.label 'from_date_half_a_year' do
-          = f.radio_button :from_date, 'half_a_year'
-          span.label-body 指定した日付から半年後まで
-        = f.label 'from_date_year' do
-          = f.radio_button :from_date, 'year'
-          span.label-body 指定した日付から1年後まで
-        = f.label 'from_date_for_date' do
-          = f.radio_button :from_date, 'for_date'
-          span.label-body 任意の日まで
-          = f.date_field :for_date
-    hr
-    .row
+      = f.label :meet_all_conditions do
+        = f.check_box :meet_all_conditions, {}, checked_valud = 'true', unchecked_value = 'false'
+        span.label-body 上記全ての条件を満たすものを検索
       = f.label :include_resolved do
         = f.check_box :include_resolved, {}, checked_valud = 'true', unchecked_value = 'false'
         span.label-body 解決済みを含める
-      = f.label :meet_all_conditions do
-        = f.check_box :meet_all_conditions, {}, checked_valud = 'true', unchecked_value = 'false'
-        span.label-body 全ての条件を満たすものを検索
+    hr
     .row
       = f.submit '検索する', class: 'button-primary u-full-width'
 

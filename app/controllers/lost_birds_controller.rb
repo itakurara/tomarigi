@@ -26,6 +26,6 @@ class LostBirdsController < ApplicationController
   end
 
   def search_params
-    params.required(:q).permit(:status, :kind, :ring_number, :description, :address, :date, :for_date, :include_resolved, :meet_all_conditions)
+    params.required(:q).permit(:status, :kind, :ring_number, :description, :address, :date, :date_range, :include_resolved, :meet_all_conditions)
   end
 end
