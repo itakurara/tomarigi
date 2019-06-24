@@ -1,5 +1,7 @@
+= render partial: 'common/header'
+
 .container
-  h1 迷子の登録
+  h1.sub-title 迷子の登録
 
   - @lost_bird.errors.full_messages.each do |message|
     = p message
@@ -35,6 +37,6 @@
     // TODO: 写真
 
     .row
-      = f.submit '登録する', class: 'u-full-width button-primary'
+      = f.submit '登録する', class: 'u-full-width button-primary submit-button'
 
-  = link_to 'top', root_path
+= render partial: 'common/footer'

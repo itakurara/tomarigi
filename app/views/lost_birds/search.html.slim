@@ -1,5 +1,7 @@
+= render partial: 'common/header'
+
 .container
-  h1 検索結果
+  h1.sub-title 検索結果
 
   - @search_results.each do |search_result|
     dl
@@ -24,4 +26,4 @@
       dt その他の情報
       dd = search_result.description
 
-  = link_to 'top', root_path
+= render partial: 'common/footer'
