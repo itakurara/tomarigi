@@ -17,26 +17,27 @@
       li = link_to '迷子の鳥さんを保護したとき', root_path
 
   - @search_results.each do |search_result|
-    dl
-      - if search_result.lost?
-        dt 鳥さんのなまえ
-        dd = search_result.name
+    .search-result
+      dl
+        - if search_result.lost?
+          dt 鳥さんのなまえ
+          dd = search_result.name
 
-      dt 鳥さんの種類
-      dd = search_result.bird.ja_name
-      dt 足環番号
-      dd = search_result.ring_number
-      dt = search_result.kept? ? '保護された場所' : '迷子になった場所'
-      dd = search_result.address
+        dt 鳥さんの種類
+        dd = search_result.bird.ja_name
+        dt 足環番号
+        dd = search_result.ring_number
+        dt = search_result.kept? ? '保護された場所' : '迷子になった場所'
+        dd = search_result.address
 
-      - if search_result.kept?
-        dt 保護された日付
-        dd = search_result.found_at
-      - else
-        dt 迷子になった日付
-        dd = search_result.lost_at
+        - if search_result.kept?
+          dt 保護された日付
+          dd = search_result.found_at
+        - else
+          dt 迷子になった日付
+          dd = search_result.lost_at
 
-      dt その他の情報
-      dd = search_result.description
+        dt その他の情報
+        dd = search_result.description
 
 = render partial: 'common/footer'
