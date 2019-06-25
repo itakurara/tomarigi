@@ -3,6 +3,19 @@
 .container
   h1.sub-title 検索結果
 
+  - if @search_results.empty?
+    p
+      | 該当する鳥さんはまだ見つかりませんでした。
+        <br>
+        もう少し待ってみましょう...
+    p
+      i.far.fa-check-square
+      = 'ほかにもなにかできることがあるかも？'
+    // TODO: 読み物ページ
+    ul
+      li = link_to '鳥さんが迷子になってしまったとき', root_path
+      li = link_to '迷子の鳥さんを保護したとき', root_path
+
   - @search_results.each do |search_result|
     dl
       - if search_result.lost?
