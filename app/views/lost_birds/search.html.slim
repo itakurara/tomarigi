@@ -17,8 +17,8 @@
       li = link_to '迷子の鳥さんを保護したとき', root_path
 
   - @search_results.each do |search_result|
-    .search-result
-      dl
+    .search-result.row
+      dl.two-thirds.column
         - if search_result.lost?
           dt 鳥さんのなまえ
           dd = search_result.name
@@ -39,5 +39,9 @@
 
         dt その他の情報
         dd = search_result.description
+
+      - if search_result.photos.attached?
+        .photo.one-third.column
+          = image_tag(search_result.photos.first.variant(auto_orient: true))
 
 = render partial: 'common/footer'

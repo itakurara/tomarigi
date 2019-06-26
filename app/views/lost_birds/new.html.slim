@@ -12,6 +12,10 @@
         = f.select :status, options_for_status, {}, class: 'u-full-width'
     .row
       .six.columns
+        = f.label :photos, '鳥さんの写真'
+        = f.file_field :photos, multiple: true, accept: 'image/png,image/gif,image/jpeg'
+    .row
+      .six.columns
         = f.label :name, '鳥さんのお名前'
         = f.text_field :name, class: 'u-full-width'
     .row

@@ -15,6 +15,7 @@ class LostBird < ApplicationRecord
   end
 
   belongs_to :bird
+  has_many_attached :photos
   enum status: [:lost, :kept]
 
   before_save :normalize_blank
