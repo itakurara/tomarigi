@@ -13,14 +13,13 @@ div.container
     = form_with scope: :q, url: search_lost_birds_path, method: :get, local:true do |f|
       .which-birds
         .row
-          .four.columns
-            = f.label 'status_kept' do
-              = f.radio_button :status, 'kept', checked: true
-              span.label-body 保護されてる鳥さん
-          .four.columns
-            = f.label 'status_lost' do
-              = f.radio_button :status, 'lost'
-              span.label-body 迷子の鳥さん
+          .six.columns
+            .which-birds__button
+              = f.radio_button :status, 'kept', checked: true, class: 'which-birds__radio'
+              = f.label 'status_kept', '保護されてる鳥さん'
+            .which-birds__button
+              = f.radio_button :status, 'lost', class: 'which-birds__radio'
+              = f.label 'status_lost', '迷子の鳥さん'
       .row
         .six.columns
           = f.label :date, class: 'search__label' do
