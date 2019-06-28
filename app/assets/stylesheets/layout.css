@@ -15,11 +15,17 @@ html {
   margin-bottom: 3rem;
   background: #ffffff;
 }
+.top-header {
+  position: relative;
+}
 .header {
   background: #191970;
   margin-bottom: 4rem;
   color: #ffffff;
   border: 1px solid transparent;
+}
+.about-content {
+  height: 500px;
 }
 .footer {
   margin-top: 10rem;

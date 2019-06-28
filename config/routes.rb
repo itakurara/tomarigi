@@ -6,4 +6,6 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+
+  get 'about', to: 'static_pages#about'
 end

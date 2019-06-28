@@ -1,9 +1,17 @@
 i {
   margin-right: .5rem;
 }
+a {
+  text-decoration: none;
+}
 .title {
   color: #191970;
   margin-bottom: 4rem;
+}
+.about {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 .sub-title {
   font-size: 3.6rem;
