@@ -1,6 +1,8 @@
 window.onload = function() {
   var status = document.getElementById('js-toggle-by-status');
 
+  if (status) { status.onchange = toggleElements; }
+
   function toggleElements() {
     var els = document.querySelectorAll('.js-toggle-element');
     var inputs = document.querySelectorAll('.js-toggle-input');
@@ -15,6 +17,4 @@ window.onload = function() {
       }
     })
   }
-
-  status.onchange = toggleElements;
 }
