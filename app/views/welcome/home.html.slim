@@ -15,10 +15,10 @@ div.container
         .row
           .six.columns
             .which-birds__button
-              = f.radio_button :status, 'kept', checked: true, class: 'which-birds__radio'
+              = f.radio_button :status, 'kept', checked: true, class: 'which-birds__radio js-toggle-by-status'
               = f.label 'status_kept', '保護されてる鳥さん'
             .which-birds__button
-              = f.radio_button :status, 'lost', class: 'which-birds__radio'
+              = f.radio_button :status, 'lost', class: 'which-birds__radio js-toggle-by-status'
               = f.label 'status_lost', '迷子の鳥さん'
       .row
         .six.columns
@@ -46,11 +46,16 @@ div.container
             i.fas.fa-kiwi-bird
             span 鳥さんの種類
           = f.text_field :kind, class: 'u-full-width'
-        .six.columns
-          = f.label :address, class: 'search__label' do
+        .six.columns.js-toggle-element.js-toggle-show
+          = f.label :found_address, class: 'search__label' do
             i.fas.fa-map-marker-alt
-            span 住所
-          = f.text_field :address, class: 'u-full-width'
+            span 保護された住所
+          = f.text_field :found_address, class: 'u-full-width js-toggle-input'
+        .six.columns.js-toggle-element
+          = f.label :lost_address, class: 'search__label' do
+            i.fas.fa-map-marker-alt
+            span 迷子になった住所
+          = f.text_field :lost_address, disabled: true, class: 'u-full-width js-toggle-input'
       .row
         .four.columns
           = f.label :ring_number, class: 'search__label' do

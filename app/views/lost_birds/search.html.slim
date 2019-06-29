@@ -27,8 +27,12 @@
         dd = search_result.bird.ja_name
         dt 足環番号
         dd = search_result.ring_number
-        dt = search_result.kept? ? '保護された場所' : '迷子になった場所'
-        dd = search_result.address
+        - if search_result.kept?
+          dt 保護された場所
+          dd = search_result.found_address
+        -else
+          dt 迷子になった場所
+          dd = search_result.lost_address
 
         - if search_result.kept?
           dt 保護された日付

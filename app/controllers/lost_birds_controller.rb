@@ -22,10 +22,10 @@ class LostBirdsController < ApplicationController
   private
 
   def lost_bird_params
-    params.required(:lost_bird).permit(:status, :name, :address, :bird_id, :lost_at, :found_at, :ring_number, :description, photos: [])
+    params.required(:lost_bird).permit(:status, :name, :lost_address, :found_address, :bird_id, :lost_at, :found_at, :ring_number, :description, photos: [])
   end
 
   def search_params
-    params.required(:q).permit(:status, :kind, :ring_number, :description, :address, :date, :date_range, :include_resolved, :meet_all_conditions)
+    params.required(:q).permit(:status, :kind, :ring_number, :description, :lost_address, :found_address, :date, :date_range, :include_resolved, :meet_all_conditions)
   end
 end

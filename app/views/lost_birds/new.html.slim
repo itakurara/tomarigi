@@ -26,11 +26,11 @@
         = f.label :bird_id, '鳥さんの種類'
         = f.select :bird_id, options_for_birds
     .row.js-toggle-element.js-toggle-show
-      = f.label :address, '逃した場所(都道府県・市区町村あたりまで)'
-      = f.text_field :address, placeholder:'東京都新宿区', class: 'u-full-width'
+      = f.label :lost_address, '逃した場所(都道府県・市区町村あたりまで)'
+      = f.text_field :lost_address, placeholder:'東京都新宿区', class: 'u-full-width'
     .row.js-toggle-element
-      = f.label :address, '保護した場所'
-      = f.text_field :address, placeholder:'東京都新宿区', disabled: true, class: 'u-full-width'
+      = f.label :found_address, '保護した場所'
+      = f.text_field :found_address, placeholder:'東京都新宿区', disabled: true, class: 'u-full-width'
     .row.js-toggle-element.js-toggle-show
       .six.columns
         = f.label :lost_at, '逃した日'

@@ -11,7 +11,8 @@ class LostBird < ApplicationRecord
     indexes :found_at, type: 'date'
     indexes :ring_number, analyzer: 'kuromoji', type: 'text'
     indexes :name, analyzer: 'kuromoji', type: 'text'
-    indexes :address, analyzer: 'kuromoji', type: 'text'
+    indexes :lost_address, analyzer: 'kuromoji', type: 'text'
+    indexes :found_address, analyzer: 'kuromoji', type: 'text'
     indexes :status, type: 'keyword'
     indexes :resolved, type: 'boolean'
     indexes :created_at, type: 'date'
@@ -81,7 +82,7 @@ class LostBird < ApplicationRecord
     match_queries = []
     params.each do |k, v|
       if v.present?
-        if k == 'address'
+        if k == 'lost_address' || k == 'found_address'
           match_queries << { match_phrase: { k => v } }
         else
           match_queries << { match: { k => v } }
@@ -124,7 +125,8 @@ class LostBird < ApplicationRecord
       found_at: found_at,
       ring_number: ring_number,
       name: name,
-      address: address,
+      lost_address: lost_address,
+      found_address: found_address,
       status: status,
       resolved: resolved,
       created_at: created_at

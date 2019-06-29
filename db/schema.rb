@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_26_093309) do
+ActiveRecord::Schema.define(version: 2019_06_29_083653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,9 +52,10 @@ ActiveRecord::Schema.define(version: 2019_06_26_093309) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "address"
     t.integer "status"
     t.boolean "resolved", default: false, null: false
+    t.string "lost_address"
+    t.string "found_address"
     t.index ["bird_id"], name: "index_lost_birds_on_bird_id"
     t.index ["found_at"], name: "index_lost_birds_on_found_at"
     t.index ["lost_at"], name: "index_lost_birds_on_lost_at"

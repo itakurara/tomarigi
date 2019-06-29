@@ -1,7 +1,14 @@
 window.onload = function() {
-  var status = document.getElementById('js-toggle-by-status');
+  var statusSelect = document.getElementById('js-toggle-by-status');
+  var statusRadio = document.getElementsByClassName('js-toggle-by-status');
 
-  if (status) { status.onchange = toggleElements; }
+  if (statusSelect) { statusSelect.onchange = toggleElements; }
+  if (statusRadio) {
+    for(var i = 0; i < statusRadio.length; i++){
+      radio = statusRadio.item(i);
+      radio.onchange = toggleElements;
+    }
+  }
 
   function toggleElements() {
     var els = document.querySelectorAll('.js-toggle-element');
