@@ -26,11 +26,11 @@
         = f.label :bird_id, '鳥さんの種類'
         = f.select :bird_id, options_for_birds
     .row.js-toggle-element.js-toggle-show
-      = f.label :address, '逃した場所'
-      = f.text_field :address, class: 'u-full-width'
+      = f.label :address, '逃した場所(都道府県・市区町村あたりまで)'
+      = f.text_field :address, placeholder:'東京都新宿区', class: 'u-full-width'
     .row.js-toggle-element
       = f.label :address, '保護した場所'
-      = f.text_field :address, disabled: true, class: 'u-full-width'
+      = f.text_field :address, placeholder:'東京都新宿区', disabled: true, class: 'u-full-width'
     .row.js-toggle-element.js-toggle-show
       .six.columns
         = f.label :lost_at, '逃した日'
@@ -41,8 +41,7 @@
         = f.date_field :found_at, disabled: true, class: 'u-full-width js-toggle-input'
     .row
       = f.label :description, '鳥さんの特徴や当時の状況などその他の情報'
-      = f.text_area :description, class: 'u-full-width'
-    // TODO: 写真
+      = f.text_area :description, placeholder: '(例)「〇〇」と自分の名前を喋ります。人によく慣れており、手乗りです。XX公園の方へ飛んで行ったのが見えました…',class: 'u-full-width'
 
     .row
       = f.submit '登録する', class: 'u-full-width button-primary submit-button'

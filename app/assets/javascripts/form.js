@@ -6,6 +6,7 @@ window.onload = function() {
     var inputs = document.querySelectorAll('.js-toggle-input');
 
     els.forEach(function(el) { el.classList.toggle('js-toggle-show'); });
+
     inputs.forEach(function(input) {
       if (input.getAttribute('disabled') == null) {
         input.setAttribute('disabled', 'disabled');
