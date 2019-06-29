@@ -25,20 +25,19 @@
       .six.columns
         = f.label :bird_id, '鳥さんの種類'
         = f.select :bird_id, options_for_birds
-    .row.js-toggle-element.js-toggle-show
-      = f.label :lost_address, '逃した場所(都道府県・市区町村あたりまで)'
-      = f.text_field :lost_address, placeholder:'東京都新宿区', class: 'u-full-width'
-    .row.js-toggle-element
-      = f.label :found_address, '保護した場所'
-      = f.text_field :found_address, placeholder:'東京都新宿区', disabled: true, class: 'u-full-width'
-    .row.js-toggle-element.js-toggle-show
-      .six.columns
+    .row
+      .six.columns.js-toggle-element.js-toggle-show
+        = f.label :lost_address, '逃した場所(都道府県・市区町村まで)'
+        = f.text_field :lost_address, placeholder:'東京都新宿区', class: 'u-full-width'
+      .six.columns.js-toggle-element.ml-0
+        = f.label :found_address, '保護した場所(都道府県・市区町村まで)'
+        = f.text_field :found_address, placeholder:'東京都新宿区', disabled: true, class: 'u-full-width'
+      .six.columns.js-toggle-element.js-toggle-show
         = f.label :lost_at, '逃した日'
-        = f.date_field :lost_at, class: 'u-full-width js-toggle-input'
-    .row.js-toggle-element
-      .six.columns
+        = f.date_field :lost_at, class: 'js-toggle-input'
+      .six.columns.js-toggle-element
         = f.label :found_at, '見つけた日'
-        = f.date_field :found_at, disabled: true, class: 'u-full-width js-toggle-input'
+        = f.date_field :found_at, disabled: true, class: 'js-toggle-input'
     .row
       = f.label :description, '鳥さんの特徴や当時の状況などその他の情報'
       = f.text_area :description, placeholder: '(例)「〇〇」と自分の名前を喋ります。人によく慣れており、手乗りです。XX公園の方へ飛んで行ったのが見えました…',class: 'u-full-width'
