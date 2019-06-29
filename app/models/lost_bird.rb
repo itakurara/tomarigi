@@ -12,6 +12,7 @@ class LostBird < ApplicationRecord
     indexes :address, analyzer: 'kuromoji', type: 'text'
     indexes :status, type: 'keyword'
     indexes :resolved, type: 'boolean'
+    indexes :created_at, type: 'date'
   end
 
   belongs_to :bird
@@ -123,7 +124,8 @@ class LostBird < ApplicationRecord
       name: name,
       address: address,
       status: status,
-      resolved: resolved
+      resolved: resolved,
+      created_at: created_at
     }
   end
 end
