@@ -2,6 +2,8 @@ class LostBird < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+  index_name "lost_birds_#{Rails.env}"
+
   mapping dynamic: 'strict' do
     indexes :description, analyzer: 'kuromoji', type: 'text'
     indexes :kind, analyzer: 'kuromoji', type: 'text'
