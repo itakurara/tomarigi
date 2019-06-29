@@ -2,6 +2,8 @@ class LostBird < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+  MATCH_PHRASE_FIELDS = %w(lost_address found_address kind)
+
   index_name "lost_birds_#{Rails.env}"
 
   mapping dynamic: 'strict' do
@@ -82,7 +84,7 @@ class LostBird < ApplicationRecord
     match_queries = []
     params.each do |k, v|
       if v.present?
-        if k == 'lost_address' || k == 'found_address'
+        if MATCH_PHRASE_FIELDS.include? k
           match_queries << { match_phrase: { k => v } }
         else
           match_queries << { match: { k => v } }
