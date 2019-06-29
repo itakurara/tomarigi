@@ -14,7 +14,9 @@ class LostBird < ApplicationRecord
     indexes :ring_number, analyzer: 'kuromoji', type: 'text'
     indexes :name, analyzer: 'kuromoji', type: 'text'
     indexes :lost_address, analyzer: 'kuromoji', type: 'text'
+    indexes :lost_address_for_aggs, type: 'keyword'
     indexes :found_address, analyzer: 'kuromoji', type: 'text'
+    indexes :found_address_for_aggs, type: 'keyword'
     indexes :status, type: 'keyword'
     indexes :resolved, type: 'boolean'
     indexes :created_at, type: 'date'
@@ -129,6 +131,8 @@ class LostBird < ApplicationRecord
       name: name,
       lost_address: lost_address,
       found_address: found_address,
+      lost_address_for_aggs: lost_address,
+      found_address_for_aggs: found_address,
       status: status,
       resolved: resolved,
       created_at: created_at
