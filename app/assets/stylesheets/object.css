@@ -8,6 +8,12 @@ a {
   color: #191970;
   margin-bottom: 4rem;
 }
+.js-toggle-element {
+  display: none;
+}
+.js-toggle-show {
+  display: block;
+}
 .about {
   position: absolute;
   top: 0;

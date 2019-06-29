@@ -9,15 +9,15 @@
   = form_with model: @lost_bird, local: true do |f|
     .row
       .six.columns
-        = f.select :status, options_for_status, {}, class: 'u-full-width'
+        = f.select :status, options_for_status, {}, class: 'u-full-width', id: 'js-toggle-by-status'
     .row
       .six.columns
         = f.label :photos, '鳥さんの写真'
         = f.file_field :photos, multiple: true, accept: 'image/png,image/gif,image/jpeg'
-    .row
+    .row.js-toggle-element.js-toggle-show
       .six.columns
         = f.label :name, '鳥さんのお名前'
-        = f.text_field :name, class: 'u-full-width'
+        = f.text_field :name, class: 'u-full-width js-toggle-input'
     .row
       .six.columns
         = f.label :ring_number, '足環番号'
@@ -25,16 +25,20 @@
       .six.columns
         = f.label :bird_id, '鳥さんの種類'
         = f.select :bird_id, options_for_birds
-    .row
-      = f.label :address, '逃したor保護している住所'
+    .row.js-toggle-element.js-toggle-show
+      = f.label :address, '逃した場所'
       = f.text_field :address, class: 'u-full-width'
-    .row
+    .row.js-toggle-element
+      = f.label :address, '保護した場所'
+      = f.text_field :address, disabled: true, class: 'u-full-width'
+    .row.js-toggle-element.js-toggle-show
       .six.columns
         = f.label :lost_at, '逃した日'
-        = f.date_field :lost_at, class: 'u-full-width'
+        = f.date_field :lost_at, class: 'u-full-width js-toggle-input'
+    .row.js-toggle-element
       .six.columns
         = f.label :found_at, '見つけた日'
-        = f.date_field :found_at, class: 'u-full-width'
+        = f.date_field :found_at, disabled: true, class: 'u-full-width js-toggle-input'
     .row
       = f.label :description, '鳥さんの特徴や当時の状況などその他の情報'
       = f.text_area :description, class: 'u-full-width'
