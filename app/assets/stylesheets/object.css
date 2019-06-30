@@ -48,6 +48,16 @@ a {
 .comments-list__comment {
   padding: 2rem;
 }
+.comment-list__button {
+  text-align: right;
+  margin-top: 2rem;
+}
+.comment-list__button button {
+  font-size: 1.2rem;
+}
+input.comment-form__button {
+  font-size: 1.2rem;
+}
 .which-birds {
   margin-bottom: 3rem;
 }

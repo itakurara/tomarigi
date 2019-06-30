@@ -31,12 +31,12 @@
     - if @lost_bird.photos.attached?
       .photo.one-third.column
         = image_tag(@lost_bird.photos.first.variant(auto_orient: true))
-  .row
+  .row.comment-form
     = form_with model: @comment, local: true do |f|
       = f.hidden_field :lost_bird_id
       = f.label :content, 'コメント'
-      = f.text_area :content, class: 'u-full-width'
-      = f.submit '送信'
+      = f.text_area :content, required: true, class: 'u-full-width'
+      = f.submit '送信', class: 'comment-form__button'
 
   - if @comments.present?
     .row.comments-list
@@ -46,6 +46,9 @@
             = comment.content
           div
             = "(#{comment.created_at})"
+          div.comment-list__button
+            = link_to comment, method: :delete do
+              button 削除
 
   = link_to 'トップページへ', root_path
 
