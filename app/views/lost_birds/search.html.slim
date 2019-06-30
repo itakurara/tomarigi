@@ -18,31 +18,36 @@
 
   - @search_results.each do |search_result|
     .search-result.row
-      dl.two-thirds.column
-        - if search_result.lost?
-          dt 鳥さんのなまえ
-          dd = search_result.name
+      .two-thirds.column
+        dl
+          - if search_result.lost?
+            dt 鳥さんのなまえ
+            dd = search_result.name
 
-        dt 鳥さんの種類
-        dd = search_result.bird.ja_name
-        dt 足環番号
-        dd = search_result.ring_number
-        - if search_result.kept?
-          dt 保護された場所
-          dd = search_result.found_address
-        -else
-          dt 迷子になった場所
-          dd = search_result.lost_address
+          dt 鳥さんの種類
+          dd = search_result.bird.ja_name
+          dt 足環番号
+          dd = search_result.ring_number
+          - if search_result.kept?
+            dt 保護された場所
+            dd = search_result.found_address
+          -else
+            dt 迷子になった場所
+            dd = search_result.lost_address
 
-        - if search_result.kept?
-          dt 保護された日付
-          dd = search_result.found_at
-        - else
-          dt 迷子になった日付
-          dd = search_result.lost_at
+          - if search_result.kept?
+            dt 保護された日付
+            dd = search_result.found_at
+          - else
+            dt 迷子になった日付
+            dd = search_result.lost_at
 
-        dt その他の情報
-        dd = search_result.description
+          dt その他の情報
+          dd = search_result.description
+        p
+          = link_to lost_bird_path(search_result) do
+            i.far.fa-comment-alt
+            = '投稿にコメントする'
 
       - if search_result.photos.attached?
         .photo.one-third.column

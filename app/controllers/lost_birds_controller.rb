@@ -4,6 +4,9 @@ class LostBirdsController < ApplicationController
   end
 
   def show
+    @lost_bird = LostBird.find(params.permit(:id)[:id])
+    @comment = Comment.new(lost_bird_id: @lost_bird.id)
+    @comments = @lost_bird.comments
   end
 
   def create

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_29_083653) do
+ActiveRecord::Schema.define(version: 2019_06_30_015435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(version: 2019_06_29_083653) do
     t.index ["ja_name"], name: "index_birds_on_ja_name"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "lost_bird_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lost_bird_id"], name: "index_comments_on_lost_bird_id"
+  end
+
   create_table "lost_birds", force: :cascade do |t|
     t.string "name"
     t.bigint "bird_id"
@@ -63,4 +71,5 @@ ActiveRecord::Schema.define(version: 2019_06_29_083653) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "lost_birds"
 end

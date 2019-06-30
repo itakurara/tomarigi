@@ -26,6 +26,28 @@ a {
   font-size: 1.3rem;
   color: #778899;
 }
+.search-result {
+  border: 1px solid #191970;
+  border-radius: 7px;
+  padding: 1rem;
+  margin-bottom: 3rem;
+  background: #ffffff;
+}
+.lost-bird-details {
+  border: 1px solid #191970;
+  border-radius: 7px;
+  padding: 1rem;
+  margin-bottom: 3rem;
+  background: #ffffff;
+}
+.comments-list {
+  background: #ffffff;
+  border: 1px solid #191970;
+  margin-bottom: 6rem;
+}
+.comments-list__comment {
+  padding: 2rem;
+}
 .which-birds {
   margin-bottom: 3rem;
 }

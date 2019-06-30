@@ -1,7 +1,51 @@
 = render partial: 'common/header'
 
 .container
-  p 飼い主さんのもとに帰れますように…
+  .lost-bird-details.row
+    .two-thirds.column
+      dl
+        - if @lost_bird.lost?
+          dt 鳥さんのなまえ
+          dd = @lost_bird.name
+
+        dt 鳥さんの種類
+        dd = @lost_bird.bird.ja_name
+        dt 足環番号
+        dd = @lost_bird.ring_number
+        - if @lost_bird.kept?
+          dt 保護された場所
+          dd = @lost_bird.found_address
+        -else
+          dt 迷子になった場所
+          dd = @lost_bird.lost_address
+
+        - if @lost_bird.kept?
+          dt 保護された日付
+          dd = @lost_bird.found_at
+        - else
+          dt 迷子になった日付
+          dd = @lost_bird.lost_at
+
+        dt その他の情報
+        dd = @lost_bird.description
+    - if @lost_bird.photos.attached?
+      .photo.one-third.column
+        = image_tag(@lost_bird.photos.first.variant(auto_orient: true))
+  .row
+    = form_with model: @comment, local: true do |f|
+      = f.hidden_field :lost_bird_id
+      = f.label :content, 'コメント'
+      = f.text_area :content, class: 'u-full-width'
+      = f.submit '送信'
+
+  - if @comments.present?
+    .row.comments-list
+      - @comments.each do |comment|
+        div.comments-list__comment
+          div
+            = comment.content
+          div
+            = "(#{comment.created_at})"
 
   = link_to 'トップページへ', root_path
 

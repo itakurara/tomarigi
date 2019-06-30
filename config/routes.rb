@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+
+    member do
+      resources :comments
+    end
   end
 
   get 'about', to: 'static_pages#about'
