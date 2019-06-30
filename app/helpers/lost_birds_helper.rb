@@ -4,6 +4,6 @@ module LostBirdsHelper
   end
 
   def options_for_birds
-    Bird.all.map { |b| [b.ja_name, b.id] }
+    Bird.order(ja_name: :asc).all.map { |b| [b.ja_name, b.id] }
   end
 end
