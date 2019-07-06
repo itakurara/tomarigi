@@ -8,6 +8,10 @@
 
     .row
       .six.columns
+        = f.label :name, 'ニックネーム（投稿などに表示されます）'
+        = f.text_field :name, class: 'u-full-width'
+    .row
+      .six.columns
         = f.label :email, 'メールアドレス'
         = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'u-full-width'
     .row
