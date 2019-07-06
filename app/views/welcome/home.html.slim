@@ -1,12 +1,20 @@
 div.container
-  .top-header
-    h1.title
-      i.fas.fa-moon
-      span 迷子のtomarigi
-    p.about
-      = link_to about_path do
-        i.far.fa-question-circle
-        = '迷子のtomarigiとは？'
+  .top-header.row
+    .six.columns
+      h1.title
+        i.fas.fa-moon
+        span 迷子のtomarigi
+    .six.columns
+      ul.top-header-util
+        li
+          - if user_signed_in?
+            = link_to 'ログアウト', destroy_user_session_path, method: :delete
+          - else
+            = link_to 'ログイン', new_user_session_path
+        li
+          = link_to about_path do
+            i.far.fa-question-circle
+            = '迷子のtomarigiとは？'
 
   .search
     h2.sub-title 鳥さんを探す

@@ -14,10 +14,14 @@ a {
 .js-toggle-show {
   display: block;
 }
-.about {
-  position: absolute;
-  top: 0;
-  right: 0;
+.top-header-util{
+  margin-bottom: 0;
+  list-style: none;
+  text-align: right;
+}
+.top-header-util li{
+  display: inline-block;
+  margin-left: 1.5rem;
 }
 .sub-title {
   font-size: 3.6rem;
