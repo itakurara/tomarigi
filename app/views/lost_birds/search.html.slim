@@ -2,6 +2,11 @@
 
 .container
   h1.sub-title 検索結果
+  - unless user_signed_in?
+    p
+      |
+        投稿にコメントするには
+        <a href="#{new_user_session_path}">ログイン</a>する必要があります。
 
   - if @search_results.empty?
     p

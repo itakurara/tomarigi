@@ -84,6 +84,11 @@ div.container
         = f.submit '検索する', class: 'button-primary u-full-width submit-button'
 
   h2.sub-title 鳥さんを登録する
+  - unless user_signed_in?
+    p
+      |
+        鳥さんの登録には
+        <a href="#{new_user_session_path}">ログイン</a>する必要があります。
   = link_to '「探してます」「保護してます」の登録', new_lost_bird_path
 
 = render partial: 'common/footer'

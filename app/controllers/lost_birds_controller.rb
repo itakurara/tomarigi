@@ -1,4 +1,6 @@
 class LostBirdsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :show]
+
   def new
     @lost_bird ||= LostBird.new
   end
