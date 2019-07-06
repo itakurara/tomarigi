@@ -116,3 +116,7 @@ input.submit-button {
   max-width: 100%;
   max-height: 100%;
 }
+.login-tips__text{
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}

@@ -1,0 +1,30 @@
+= render 'common/header'
+
+.container
+  h1.sub-title 新規登録
+
+  = form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
+    = render 'devise/shared/error_messages', resource: resource
+
+    .row
+      .six.columns
+        = f.label :email, 'メールアドレス'
+        = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'u-full-width'
+    .row
+      .six.columns
+        = f.label :password, 'パスワード'
+        - if @minimum_password_length
+          span = "#{@minimum_password_length}文字以上"
+        = f.password_field :password, autocomplete: 'new-password', class: 'u-full-width'
+    .row
+      .six.columns
+        = f.label :password_confirmation, 'パスワード確認'
+        = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'u-full-width'
+
+    =f.submit '登録'
+
+  .login-tips
+    p.login-tips__text こんなときは…
+    = render 'devise/shared/links'
+
+= render 'common/footer'

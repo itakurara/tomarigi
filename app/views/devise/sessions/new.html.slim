@@ -1,0 +1,28 @@
+= render 'common/header'
+
+.container
+  h1.sub-title ログイン
+
+  = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+    .row
+      .six.columns
+        = f.label :email, 'メールアドレス'
+        = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'u-full-width'
+
+    .row
+      .six.columns
+        = f.label :password, 'パスワード'
+        = f.password_field :password, autocomplete: "current-password", class: 'u-full-width'
+
+    - if devise_mapping.rememberable?
+      = f.label :remember_me do
+        = f.check_box :remember_me
+        span.label-body 次回も自動でログイン
+
+    = f.submit 'ログイン'
+
+  .login-tips
+    p.login-tips__text こんな時は…
+    = render 'devise/shared/links'
+
+= render 'common/footer'
