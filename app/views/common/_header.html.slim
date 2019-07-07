@@ -4,3 +4,6 @@
       = link_to root_path do
         i.fas.fa-moon
         span 迷子のtomarigi
+    - if user_signed_in?
+      .header__user
+        = "#{current_user.name}さん"

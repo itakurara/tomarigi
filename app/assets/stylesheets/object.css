@@ -104,6 +104,13 @@ input.submit-button {
   color: #ffffff;
   text-decoration: none;
 }
+.header__user {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -0.6rem;
+  line-height: 1;
+}
 .footer__title {
   margin-bottom: 0;
   color: #ffffff;
