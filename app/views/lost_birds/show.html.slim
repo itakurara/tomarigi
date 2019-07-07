@@ -28,6 +28,9 @@
 
         dt その他の情報
         dd = @lost_bird.description
+
+        dt 投稿者
+        dd = @lost_bird.user.name
     - if @lost_bird.photos.attached?
       .photo.one-third.column
         = image_tag(@lost_bird.photos.first.variant(auto_orient: true))
@@ -42,10 +45,10 @@
     .row.comments-list
       - @comments.each do |comment|
         div.comments-list__comment
-          div
+          p
             = comment.content
           div
-            = "(#{comment.created_at})"
+            = "by #{comment.user.name} (#{comment.created_at})"
           div.comment-list__button
             = link_to comment, method: :delete do
               button 削除

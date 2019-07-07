@@ -23,6 +23,7 @@ class LostBird < ApplicationRecord
   end
 
   belongs_to :bird
+  belongs_to :user
   has_many_attached :photos
   has_many :comments
   enum status: [:lost, :kept]

@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
-    comment = Comment.new(comment_params)
+    comment = Comment.new(comment_params.merge(user_id: current_user.id))
     if comment.save
       redirect_to lost_bird_path(comment.lost_bird_id)
     else

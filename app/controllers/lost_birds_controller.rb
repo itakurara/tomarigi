@@ -12,7 +12,7 @@ class LostBirdsController < ApplicationController
   end
 
   def create
-    @lost_bird = LostBird.new(lost_bird_params)
+    @lost_bird = LostBird.new(lost_bird_params.merge(user_id: current_user.id))
     if @lost_bird.save
       redirect_to lost_bird_path(@lost_bird)
     else

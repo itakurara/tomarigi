@@ -49,6 +49,9 @@
 
           dt その他の情報
           dd = search_result.description
+
+          dt 投稿者
+          dd = search_result.user.name
         p
           = link_to lost_bird_path(search_result) do
             i.far.fa-comment-alt
