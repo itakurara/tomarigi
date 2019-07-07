@@ -18,6 +18,17 @@ div.container
         - if user_signed_in?
           li = "#{current_user.name}さん"
 
+  - if user_signed_in? && current_user.lost_birds.present?
+    .your-birds
+      p.your-birds__title = "#{current_user.name}さんがお探し中の鳥さん"
+      - current_user.lost_birds.each do |lost_bird|
+        - if lost_bird.photos.attached?
+          .your-birds__photo
+            a[href=lost_bird_path(lost_bird.id)]
+              = image_tag(lost_bird.photos.first.variant(auto_orient: true))
+        - else
+          .your-birds__empty
+            a[href=lost_bird_path(lost_bird.id)] no photo
   .search
     h2.sub-title 鳥さんを探す
     = form_with scope: :q, url: search_lost_birds_path, method: :get, local:true do |f|

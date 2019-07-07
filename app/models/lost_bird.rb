@@ -25,7 +25,7 @@ class LostBird < ApplicationRecord
   belongs_to :bird
   belongs_to :user
   has_many_attached :photos
-  has_many :comments
+  has_many :comments, dependent: :destroy
   enum status: [:lost, :kept]
 
   before_save :normalize_blank
