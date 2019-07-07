@@ -28,10 +28,10 @@
     .row
       .six.columns.js-toggle-element.js-toggle-show
         = f.label :lost_address, '逃した場所(都道府県・市区町村まで)'
-        = f.text_field :lost_address, placeholder:'東京都新宿区', class: 'u-full-width'
+        = f.text_field :lost_address, placeholder:'東京都新宿区', class: 'u-full-width js-toggle-input'
       .six.columns.js-toggle-element.ml-0
         = f.label :found_address, '保護した場所(都道府県・市区町村まで)'
-        = f.text_field :found_address, placeholder:'東京都新宿区', disabled: true, class: 'u-full-width'
+        = f.text_field :found_address, placeholder:'東京都新宿区', disabled: true, class: 'u-full-width js-toggle-input'
       .six.columns.js-toggle-element.js-toggle-show
         = f.label :lost_at, '逃した日'
         = f.date_field :lost_at, class: 'js-toggle-input'
