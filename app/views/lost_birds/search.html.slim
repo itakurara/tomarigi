@@ -60,5 +60,7 @@
       - if search_result.photos.attached?
         .photo.one-third.column
           = image_tag(search_result.photos.first.variant(auto_orient: true))
+      - else
+        .photo-empty.one-third.column no photo
 
 = render partial: 'common/footer'
