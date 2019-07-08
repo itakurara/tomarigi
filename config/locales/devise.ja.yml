@@ -18,7 +18,7 @@ ja:
       unconfirmed: "登録確認メール内のリンクをクリックして、ユーザー登録を完了させてください"
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "ユーザー登録確認"
       reset_password_instructions:
         subject: "Reset password instructions"
       unlock_instructions:

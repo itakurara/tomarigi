@@ -1,5 +1,2 @@
-<p>Welcome <%= @email %>!</p>
-
-<p>You can confirm your account email through the link below:</p>
-
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><a href="https://tomarigi.herokuapp.com/">迷子のtomarigi</a>へのユーザー登録確認メールです。</p>
+<p><%= link_to 'こちら', confirmation_url(@resource, confirmation_token: @token) %>のリンクをクリックして登録を完了させてください。</p>
