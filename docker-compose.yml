@@ -1,0 +1,28 @@
+version: '3'
+services:
+  els:
+    build:
+      context: .
+      dockerfile: Dockerfile-els
+    ports:
+      - '9200:9200'
+    volumes:
+      - ./elsdata:/usr/share/elasticsearch/data
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./tmp/db:/var/log/postgresql/data
+  web:
+    build: .
+    command: rails s -p 3000 -b '0.0.0.0'
+    environment:
+      - ELASTICSEARCH_URL=http://els:9200
+    volumes:
+      - .:/tomarigi
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+      - els
